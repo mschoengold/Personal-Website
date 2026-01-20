@@ -16,7 +16,7 @@ export default function Hero() {
         </div>
 
         <p className="text-lg text-dark-200 max-w-2xl mx-auto mb-8 leading-relaxed">
-          I work at the intersection of national security and technology. I currently work at Palantir, focused on defense solutions and the defense industrial base.
+          I work at the intersection of national security and technology. At Palantir, I focus on defense solutions for the Department Defense and supporting the defense industrial base.
         </p>
 
         <div className="flex items-center justify-center gap-4">
