@@ -7,7 +7,7 @@ export default function Hero() {
     <section className="min-h-screen flex items-center justify-center px-6 pt-20">
       <div className="max-w-4xl mx-auto text-center">
         <div className="mb-6">
-          <h1 className="text-5xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-primary-400 to-primary-600 bg-clip-text text-transparent">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-dark-100">
             Michael Schoengold Beatty
           </h1>
           <p className="text-xl md:text-2xl text-dark-100 font-light">
@@ -16,9 +16,7 @@ export default function Hero() {
         </div>
 
         <p className="text-lg text-dark-200 max-w-2xl mx-auto mb-8 leading-relaxed">
-          Mike Schoengold Beatty works at the intersection of national security and technology. 
-          He currently works at Palantir working on defense solutions and continues to think 
-          about American national security challenges.
+          I work at the intersection of national security and technology. I currently work at Palantir, focused on defense solutions and the defense industrial base.
         </p>
 
         <div className="flex items-center justify-center gap-4">

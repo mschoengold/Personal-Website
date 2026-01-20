@@ -5,13 +5,13 @@ export default function Experience() {
     {
       title: 'Business Operations Lead',
       organization: 'Palantir Technologies',
-      period: 'December 2024 - Present',
+      period: 'December 2025 - Present',
       type: 'work',
     },
     {
       title: 'Acting Chief of Staff',
       organization: 'Department of Defense, Office of the Secretary of Defense, Office of the Assistant Secretary of Defense for Special Operations and Low-Intensity Conflict (ASD-SO/LIC)',
-      period: 'October 2024 - December 2024',
+      period: 'December 2024 - December 2025',
       type: 'work',
     },
     {
@@ -42,6 +42,12 @@ export default function Experience() {
       title: 'Client Representative/Sales Strategist',
       organization: 'International Business Machines (IBM), Summit Development Leadership Program',
       period: 'June 2015 - August 2016',
+      type: 'work',
+    },
+    {
+      title: 'Associate',
+      organization: 'Chemonics International',
+      period: 'April 2009 - May 2011',
       type: 'work',
     },
     {
@@ -129,7 +135,7 @@ export default function Experience() {
                   {edu.institution}
                 </p>
                 <p className="text-dark-200 text-sm">
-                  {edu.field} • {edu.year}
+                  {edu.field}
                 </p>
               </div>
             ))}
