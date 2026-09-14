@@ -1,60 +1,76 @@
-import { Briefcase, GraduationCap } from 'lucide-react';
+type Sector = 'public' | 'private';
 
 export default function Experience() {
-  const experiences = [
+  const experiences: {
+    employer: string;
+    title: string;
+    detail?: string;
+    period: string;
+    sector: Sector;
+    current?: boolean;
+  }[] = [
     {
+      employer: 'Palantir Technologies',
       title: 'Business Operations Lead',
-      organization: 'Palantir Technologies',
       period: 'December 2025 - Present',
-      type: 'work',
+      sector: 'private',
+      current: true,
     },
     {
+      employer: 'Department of Defense',
       title: 'Acting Chief of Staff',
-      organization: 'Department of Defense, Office of the Secretary of Defense, Office of the Assistant Secretary of Defense for Special Operations and Low-Intensity Conflict (ASD-SO/LIC)',
+      detail:
+        'Office of the Secretary of Defense, Office of the Assistant Secretary of Defense for Special Operations and Low-Intensity Conflict (ASD-SO/LIC)',
       period: 'December 2024 - December 2025',
-      type: 'work',
+      sector: 'public',
     },
     {
+      employer: 'National Security Council',
       title: 'Director for Afghanistan',
-      organization: 'National Security Council, The White House',
+      detail: 'The White House',
       period: 'August 2023 - October 2024',
-      type: 'work',
+      sector: 'public',
     },
     {
+      employer: 'Department of State',
       title: 'Special Assistant',
-      organization: 'Department of State, Counselor of the U.S. Department of State',
+      detail: 'Counselor of the U.S. Department of State',
       period: 'May 2022 - May 2023',
-      type: 'work',
+      sector: 'public',
     },
     {
+      employer: 'Department of State',
       title: 'Team Lead',
-      organization: 'Department of State, Bureau of Conflict and Stabilization Operations',
+      detail: 'Bureau of Conflict and Stabilization Operations',
       period: 'September 2020 - May 2022',
-      type: 'work',
+      sector: 'public',
     },
     {
+      employer: 'Department of State',
       title: 'Deputy Director, Policy Advisor, and Strategic Planner',
-      organization: 'Department of State, Office of the Special Envoy for the Defeat of ISIS',
+      detail: 'Office of the Special Envoy for the Defeat of ISIS',
       period: 'September 2016 - August 2020',
-      type: 'work',
+      sector: 'public',
     },
     {
+      employer: 'IBM',
       title: 'Client Representative/Sales Strategist',
-      organization: 'International Business Machines (IBM), Summit Development Leadership Program',
+      detail: 'International Business Machines, Summit Development Leadership Program',
       period: 'June 2015 - August 2016',
-      type: 'work',
+      sector: 'private',
     },
     {
-      title: 'Associate',
-      organization: 'Chemonics International',
-      period: 'April 2009 - May 2011',
-      type: 'work',
-    },
-    {
+      employer: 'Afghanistan Stabilization Initiative',
       title: 'Manager, Monitoring and Evaluation',
-      organization: 'Afghanistan Stabilization Initiative, USAID/OTI-funded Program (Helmand, Afghanistan)',
+      detail: 'USAID/OTI-funded Program (Helmand, Afghanistan)',
       period: 'May 2011 - May 2012',
-      type: 'work',
+      sector: 'public',
+    },
+    {
+      employer: 'Chemonics International',
+      title: 'Associate',
+      period: 'April 2009 - May 2011',
+      sector: 'private',
     },
   ];
 
@@ -75,79 +91,95 @@ export default function Experience() {
       degree: 'Bachelor of Arts',
       institution: 'Northwestern University',
       field: 'Weinberg School of Arts and Sciences',
-      year: '2009',
+      year: '2008',
     },
   ];
 
+  const affiliations = [
+    'Member, Council on Foreign Relations',
+    'President, Clark and Hinman Foundation',
+  ];
+
+  // Sector is encoded in the card colour: public sector azure, private sector amber.
+  const sectorFill: Record<Sector, string> = {
+    public: 'fill-azure',
+    private: 'fill-amber',
+  };
+
   return (
-    <section id="experience" className="py-20 px-6">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-primary-400">
-          Experience
-        </h2>
+    <section id="experience" className="px-6 pt-14 scroll-mt-24">
+      <div className="max-w-6xl mx-auto">
+        <div className="tab fill-azure">
+          <span className="tab-label">Experience</span>
+        </div>
 
-        {/* Work Experience */}
-        <div className="mb-16">
-          <h3 className="text-2xl font-bold mb-6 text-white flex items-center gap-2">
-            <Briefcase className="text-primary-400" size={24} />
-            Professional Experience
-          </h3>
+        <div className="slab">
+          <div className="flex flex-wrap items-end justify-between gap-4 mb-2">
+            <h2 className="font-display text-2xl md:text-3xl text-ink">
+              Professional Experience
+            </h2>
 
-          <div className="space-y-8">
-            {experiences.map((exp, index) => (
+            <div className="flex items-center gap-2">
+              <span className="tagline fill-azure">Public sector</span>
+              <span className="tagline fill-amber">Private sector</span>
+            </div>
+          </div>
+          <p className="text-ink-muted mb-7">Most recent first.</p>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {experiences.map((exp) => (
               <div
-                key={index}
-                className="relative pl-8 pb-8 border-l-2 border-dark-400 last:pb-0"
+                key={exp.employer + exp.period}
+                className={`box-sm p-5 ${sectorFill[exp.sector]}`}
               >
-                <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-primary-600 border-4 border-dark-600"></div>
-
-                <div className="bg-dark-600/30 backdrop-blur-sm rounded-lg p-6 border border-dark-400">
-                  <h4 className="text-xl font-bold text-white mb-1">
-                    {exp.title}
-                  </h4>
-                  <p className="text-primary-400 font-medium mb-2">
-                    {exp.organization}
-                  </p>
-                  <p className="text-dark-200 text-sm">{exp.period}</p>
+                <div className="flex items-start justify-between gap-2 mb-2.5">
+                  <span className="kicker text-ink">{exp.period}</span>
+                  {exp.current && (
+                    <span className="tagline bg-panel whitespace-nowrap">Current</span>
+                  )}
                 </div>
+
+                <h3 className="card-h mb-1.5">{exp.employer}</h3>
+
+                <p className="text-[14px] font-semibold text-ink leading-snug">
+                  {exp.title}
+                </p>
+
+                {exp.detail && (
+                  <p className="text-[13px] leading-snug text-ink-muted mt-1.5">
+                    {exp.detail}
+                  </p>
+                )}
               </div>
             ))}
           </div>
-        </div>
 
-        {/* Education */}
-        <div>
-          <h3 className="text-2xl font-bold mb-6 text-white flex items-center gap-2">
-            <GraduationCap className="text-primary-400" size={24} />
+          <h3 className="font-display text-xl md:text-2xl text-ink mt-10 mb-4">
             Education
           </h3>
 
-          <div className="space-y-6">
-            {education.map((edu, index) => (
-              <div
-                key={index}
-                className="bg-dark-600/30 backdrop-blur-sm rounded-lg p-6 border border-dark-400"
-              >
-                <h4 className="text-xl font-bold text-white mb-1">
-                  {edu.degree}
-                </h4>
-                <p className="text-primary-400 font-medium mb-1">
-                  {edu.institution}
-                </p>
-                <p className="text-dark-200 text-sm">
-                  {edu.field}
+          <div className="grid md:grid-cols-3 gap-4">
+            {education.map((edu) => (
+              <div key={edu.degree} className="box-sm p-5">
+                <div className="kicker text-ink">{edu.year}</div>
+                <h4 className="card-h mt-2.5 mb-1.5">{edu.degree}</h4>
+                <p className="text-[13.5px] leading-snug text-ink-muted">
+                  {edu.institution} &middot; {edu.field}
                 </p>
               </div>
             ))}
           </div>
-        </div>
 
-        {/* Additional Affiliations */}
-        <div className="mt-12 p-6 bg-dark-600/20 rounded-lg border border-dark-400">
-          <h4 className="text-lg font-bold text-white mb-3">
-            Professional Affiliations
-          </h4>
-          <p className="text-dark-100">Member, Council on Foreign Relations</p>
+          <div className="box-sm fill-violet mt-4 px-5 py-4">
+            <span className="kicker text-ink">Professional Affiliations</span>
+            <ul className="mt-2 space-y-1">
+              {affiliations.map((item) => (
+                <li key={item} className="text-[15px] font-semibold text-ink">
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </section>

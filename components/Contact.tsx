@@ -25,53 +25,60 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" className="py-24 px-6 scroll-mt-20 border-t border-dark-400 bg-dark-800/40">
-      <div className="max-w-4xl mx-auto text-center">
-        <span className="eyebrow mb-4 justify-center">Contact</span>
-        <h2 className="font-display text-3xl md:text-5xl font-medium text-dark-50 mt-4 mb-4">
-          Get in touch
-        </h2>
-        <p className="text-dark-200 mb-12 text-lg max-w-2xl mx-auto">
-          Interested in collaborating or want to discuss national security,
-          defense policy, or enterprise operations? Feel free to reach out.
-        </p>
-
-        <div className="flex justify-center gap-4 mb-12">
-          {socialLinks.map((link) => {
-            const Icon = link.icon;
-            return (
-              <a
-                key={link.name}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-4 bg-dark-600/50 backdrop-blur-sm rounded-xl border border-dark-400 text-dark-100 hover:text-dark-50 hover:border-accent-400 hover:-translate-y-0.5 transition-all"
-                aria-label={link.name}
-              >
-                <Icon size={24} />
-              </a>
-            );
-          })}
+    <section id="contact" className="px-6 pt-14 pb-12 scroll-mt-24">
+      <div className="max-w-6xl mx-auto">
+        <div className="tab">
+          <span className="tab-label">Contact</span>
         </div>
 
-        <div className="bg-dark-600/30 backdrop-blur-sm rounded-xl p-6 border border-dark-400 max-w-lg mx-auto mb-10">
-          <p className="font-mono text-sm tracking-wide text-dark-100">
-            Currently based in{' '}
-            <span className="text-accent-300">Washington, DC</span>
-          </p>
-        </div>
+        <div className="slab">
+          <div className="grid lg:grid-cols-[1.25fr_1fr] gap-10 items-start">
+            <div>
+              <h2 className="font-display text-3xl md:text-4xl text-ink mb-3">
+                Get in touch
+              </h2>
+              <p className="text-ink-muted text-base max-w-lg mb-7">
+                Interested in collaborating or want to discuss national security,
+                defense policy, or enterprise operations? Feel free to reach out.
+              </p>
 
-        {/* Photo */}
-        <figure className="max-w-sm mx-auto rounded-2xl overflow-hidden border border-dark-400 bg-dark-600">
-          <img
-            src="/images/IMG_2880.jpeg"
-            alt="Michael Schoengold Beatty with his son, Theo"
-            className="w-full h-auto object-cover"
-          />
-          <figcaption className="font-mono text-[11px] tracking-wide text-dark-200 py-3">
-            With my son, Theo
-          </figcaption>
-        </figure>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+                {socialLinks.map((link) => {
+                  const Icon = link.icon;
+                  return (
+                    <a
+                      key={link.name}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="box-sm py-3 flex flex-col items-center gap-1.5 text-ink hover:bg-tag-amber transition-colors"
+                      aria-label={link.name}
+                    >
+                      <Icon size={18} />
+                      <span className="text-xs font-bold">{link.name}</span>
+                    </a>
+                  );
+                })}
+              </div>
+
+              <p className="font-mono text-[12.5px] font-semibold text-ink-soft">
+                Currently based in{' '}
+                <span className="fill-amber border-2 border-edge rounded px-1.5 py-0.5">
+                  Washington, DC
+                </span>
+              </p>
+            </div>
+
+            <figure className="box-sm p-2.5 m-0">
+              <img
+                src="/images/IMG_2880.jpeg"
+                alt="Michael Schoengold Beatty with his son, Theo"
+                className="w-full h-[360px] object-cover block border-2 border-edge rounded"
+              />
+              <figcaption className="kicker pt-3 pb-1 px-1">With my son, Theo</figcaption>
+            </figure>
+          </div>
+        </div>
       </div>
     </section>
   );
