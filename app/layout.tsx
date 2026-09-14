@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
-import { Fraunces, Hanken_Grotesk, IBM_Plex_Mono } from "next/font/google";
+import { Archivo, Archivo_Black, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
+import Script from "next/script";
 
-const display = Fraunces({
+const display = Archivo_Black({
   subsets: ["latin"],
+  weight: ["400"],
   variable: "--font-display",
   display: "swap",
 });
 
-const sans = Hanken_Grotesk({
+const sans = Archivo({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
@@ -17,7 +19,7 @@ const sans = Hanken_Grotesk({
 
 const mono = IBM_Plex_Mono({
   subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: ["400", "500", "600"],
   variable: "--font-mono",
   display: "swap",
 });
@@ -149,7 +151,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className={`dark ${sans.variable} ${display.variable} ${mono.variable}`}>
+    <html lang="en" className={`${sans.variable} ${display.variable} ${mono.variable}`}>
       <head>
         <script
           type="application/ld+json"
@@ -159,6 +161,15 @@ export default function RootLayout({
       <body className="font-sans antialiased">
         <Navigation />
         {children}
+
+        {/* GoatCounter: privacy-friendly visit counting. Replace YOUR-CODE with
+            the site code you pick when signing up at goatcounter.com. */}
+        <Script
+          id="goatcounter"
+          strategy="afterInteractive"
+          src="https://gc.zgo.at/count.js"
+          data-goatcounter="https://YOUR-CODE.goatcounter.com/count"
+        />
       </body>
     </html>
   );
