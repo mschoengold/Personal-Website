@@ -162,13 +162,12 @@ export default function RootLayout({
         <Navigation />
         {children}
 
-        {/* GoatCounter: privacy-friendly visit counting. Replace YOUR-CODE with
-            the site code you pick when signing up at goatcounter.com. */}
+        {/* GoatCounter: privacy-friendly visit counting. */}
         <Script
           id="goatcounter"
           strategy="afterInteractive"
           src="https://gc.zgo.at/count.js"
-          data-goatcounter="https://YOUR-CODE.goatcounter.com/count"
+          data-goatcounter="https://mschoengoldbeatty.goatcounter.com/count"
         />
       </body>
     </html>
